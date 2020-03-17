@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import uuid  # random public id
 # password hashing function
 from werkzeug.security import generate_password_hash, check_password_hash
-import jwt  # For token
+import jwt  # For token; pip3 install flask-jwt
 import datetime  # For expiration of token
 from functools import wraps
 
