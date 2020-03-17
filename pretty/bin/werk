@@ -1,0 +1,42 @@
+#!/Users/Sallabadi002/Desktop/PrettyPrinted/pretty/bin/python3.7
+#
+#
+
+""" WERK -  denkend """
+
+__copyright__ = "Copyright 2015, B.H.J Thate"
+
+## IMPORTS
+
+import sys, os
+sys.path.insert(0, os.getcwd())
+
+from meds.main import main, plugins
+from meds.bots.cli import CLI
+from meds.cfg import cfg
+from meds.log import log_init
+
+from werk import __version__
+
+import readline
+import time
+import site
+import sys
+import os
+
+## MAIN
+
+def mainprog():
+    log_init("error")
+    main.boot("WERK", version=__version__)
+    plugins.load("werk")
+    plugins.init(cfg.main.init)
+    bot = CLI()
+    bot.start(collect=True)
+
+if __name__ == "__main__": 
+    try: mainprog()
+    except (EOFError, KeyboardInterrupt): print()
+    main.wait()
+    main.shutdown()
+    os._exit(0)
